@@ -702,11 +702,11 @@ cmd({
         text: quotedMessage,
         mentions: mentionUsers
       },
-      { quoted: mek }
-    );
-  } else {
-    return reply('❌ Please reply to a message to tag all participants.');
-  }
+      { quoted: mek });
+  } catch (e) {
+        console.error(e);
+        reply("🚨 *An error occurred while trying to tag all members.*");
+    }
 });
 //--------------------------------------------
 //  TAG_ALL COMMANDS
