@@ -27,8 +27,6 @@ module.exports = {
     ANTICALL: process.env.ANTICALL || "false",
     ANTICALL_MSG: process.env.ANTICALL_MSG || "*_📞 Auto Call Reject Mode Active. 📵 No Calls Allowed!_*",
     ANTILINK: process.env.ANTILINK || "false",
-    ANTIDELETE: process.env.ANTIDELETE || "true",
-    ANTIDELETE_PM: process.env.ANTIDELETE_PM || "false",
     AUTO_LIKE_EMOJI: process.env.AUTO_LIKE_EMOJI || "💚",
     AUTO_LIKE_STATUS: process.env.AUTO_LIKE_STATUS || "false",
     AUTO_RECORDING: process.env.AUTO_RECORDING || "false",
@@ -38,5 +36,5 @@ module.exports = {
     OWNER_NAME: process.env.OWNER_NAME || "𝙴𝚖𝚙𝚒𝚛𝚎 𝚃𝚎𝚌𝚑",
     OWNER_NUMBER: process.env.OWNER_NUMBER || "2348144250768",
     PREFIX: process.env.PREFIX || ".",
-    SESSION_ID: process.env.SESSION_ID || "zRJ2zQya#Ez8XGgRV_CD7Y6xCZnoc0pcEtlR6e_BIHbcydWQ0CfQ"
+    SESSION_ID: process.env.SESSION_ID || "eRpzwQSY#MICCiTrfqRFaeMcMMq_gXIIzEa22C2vowOw7o-P0hxE"
 };
