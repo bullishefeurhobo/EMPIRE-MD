@@ -89,6 +89,28 @@ Reply With:
         }); 
       await m.react("✅");
 });
+
+cmd({
+    pattern: "prefix",
+    desc: "Set Bot Prefix",
+    category: "misc",
+    filename: __filename
+},
+async (conn, mek, m, { isOwner, q, reply }) => {
+    if (!isOwner) return reply("❌ You are not the owner!");
+    if (!q) return reply("Please provide a prefix!");
+
+    try {
+        // Update the bot prefix
+        config.PREFIX = q;
+        saveConfig();
+
+        reply(`✅ Bot prefix has been set to: ${q}`);
+    } catch (error) {
+        console.error("Error setting prefix:", error);
+        reply(`❌ Error setting prefix: ${error.message}`);
+    }
+});
 //--------------------------------------------
 //            INFO COMMANDS
 //--------------------------------------------
