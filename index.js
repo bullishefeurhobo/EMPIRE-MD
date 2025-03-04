@@ -25,7 +25,7 @@ const { sms, downloadMediaMessage } = require('./Lib/msg');
 const axios = require('axios');
 const { File } = require('megajs');
 const prefix = config.PREFIX;
-const mode = config.MODE || "private";
+const mode = config.MODE;
 const ownerNumber = [config.OWNER_NUMBER];
 const ffmpeg = require('fluent-ffmpeg');
 
