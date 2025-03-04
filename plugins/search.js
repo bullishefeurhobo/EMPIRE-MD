@@ -13,6 +13,61 @@ const { cmd, commands } = require('../command');
 const prefix = config.PREFIX; 
 const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, sleep, fetchJson } = require('../Lib/functions');
 
+
+
+
+cmd({
+    pattern: "fetch",
+    alias: ["get"],
+    desc: "Get Data/Files from URLs",
+    category: "search",
+    filename: __filename
+}, async (conn, mek, m, { from, reply, isOwner, q }) => {
+    if (!isOwner) return reply("❌ You are not the owner!");
+    if (!q) return reply("Provide a URL to get data from");
+    if (!/^https?:\/\//.test(q)) return reply('Start the *URL* with http:// or https://');
+    
+    try {
+        const url = new URL(q).href;
+        const buffer = await getBuffer(url); // Use getBuffer to fetch data
+
+        if (!buffer) return reply("❌ Failed to fetch data from the URL.");
+        
+        const contentLength = buffer.length;
+        if (contentLength && contentLength > 50 * 1024 * 1024) {
+            return reply(`❌ Content-Length exceeds limit: ${contentLength}`);
+        }
+
+        const contentType = (await axios.head(url)).headers['content-type'] || '';  // Get content-type via axios head request
+        
+        if (/image\//.test(contentType)) {
+            await conn.sendMessage(from, { image: buffer, caption: `> ${global.footer}` });
+            return;
+        } else if (/audio\//.test(contentType)) {
+            await conn.sendMessage(from, { audio: buffer, mimetype: contentType, ptt: false }); 
+            return;
+        } else if (/video\//.test(contentType)) {
+            await conn.sendMessage(from, { video: buffer, caption: `> ${global.footer}` });
+            return;
+        }
+
+        let content = '';
+        if (/application\/json/.test(contentType)) {
+            content = JSON.stringify(await axios.get(url).then(res => res.data), null, 2);
+        } else if (/text/.test(contentType)) {
+            content = await axios.get(url).then(res => res.data);
+        } else {
+            return reply("❌ Unsupported content type.");
+        }
+
+        reply(content.slice(0, 65536));  // Limit content to avoid large responses
+        await m.react("✅"); 
+    } catch (error) {
+        console.error('Fetch Error:', error);
+        reply(`❌ Error: ${error.message}`);
+    }
+});
+
 //--------------------------------------------
 // SS COMMANDS
 //--------------------------------------------
