@@ -18,6 +18,7 @@ global.alive_img = "📞 𝙰𝚞𝚝𝚘 𝙲𝚊𝚕𝚕 𝚁𝚎𝚓𝚎𝚌�
 global.caption = "𝙴𝙼𝙿𝙸𝚁𝙴-𝙼𝙳 𝙿𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝙴𝚖𝚙𝚒𝚛𝚎 𝚃𝚎𝚌𝚑";
 global.channelUrl = "https://whatsapp.com/channel/0029VajVvpQIyPtUbYt3Oz0k";
 global.botname = "𝙴𝙼𝙿𝙸𝚁𝙴-𝙼𝙳";
+global.botpic = "https://cdn.empiretech.biz.id/file/43655.jpg";
 global.devs = "2348078582627" // Developer Contact
 global.devsname = "𝙴𝚖𝚙𝚒𝚛𝚎 𝚃𝚎𝚌𝚑";
 global.apikey = "_0x5aff35,_0x1876stqr";
