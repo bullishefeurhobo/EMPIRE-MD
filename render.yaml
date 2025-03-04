@@ -10,7 +10,7 @@ services:
     routes:
       - src: /
         dest: /
-    plan: free  # Free plan for Render
+    plan: free 
     envVars:
       - key: ALWAYS_ONLINE
         value: "false"
@@ -39,4 +39,4 @@ services:
       - key: PREFIX
         value: "."
       - key: SESSION_ID
-        value: "zRJ2zQya#Ez8XGgRV_CD7Y6xCZnoc0pcEtlR6e_BIHbcydWQ0CfQ"
+        value: "eRpzwQSY#MICCiTrfqRFaeMcMMq_gXIIzEa22C2vowOw7o-P0hxE"
