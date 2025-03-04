@@ -681,56 +681,32 @@ cmd({
 //--------------------------------------------
 //  TAG COMMANDS
 //--------------------------------------------
-cmd({
-    pattern: "tag",
-    category: "group",
-    desc: "Tags every person in the group without showing the sender's name.",
-    filename: __filename,
-}, async (conn, mek, m, { 
-    from, 
-    quoted, 
-    body, 
-    isCmd, 
-    command, 
-    args, 
-    q, 
-    isGroup, 
-    sender, 
-    senderNumber, 
-    botNumber, 
-    pushname, 
-    groupMetadata, 
-    participants, 
-    groupAdmins, 
-    isBotAdmins, 
-    isAdmins, 
-    reply
-}) => {
-    try {
+cmd({ 
+  pattern: 'tag', 
+  desc: 'Tag all participants in the group', 
+  category: 'group' 
+}, async (conn, mek, m, { from, quoted, body, isGroup, sender, isOwner, reply }) => {
+       try {
         if (!isGroup) return reply("𝐓𝐡𝐢𝐬 𝐅𝐞𝐚𝐭𝐮𝐫𝐞 𝐈𝐬 𝐎𝐧𝐥𝐲 𝐅𝐨𝐫 𝐆𝐫𝐨𝐮𝐩❗");
 
-        // If no message is provided, prompt the user to use the correct format
-        if (args.length === 0) {
-            return reply(`📜 *Use:* \n\n${prefix}tag <your message>`);
-        }
+  const participants = await conn.groupMetadata(from).then(group => group.participants);
+  const mentionUsers = participants.map(participant => participant.id);
 
-        // Fetch group metadata to ensure participants are up-to-date
-        groupMetadata = await conn.groupMetadata(from);
-        participants = groupMetadata.participants;
+  if (quoted) {
+    const quotedMessage = quoted.body || quoted.caption || 'No message found in quoted reply';
 
-        // Get the message after the command (hidetag)
-        const message = args.join(' ');
+   await conn.sendMessage(
+      from, 
+      {
+        text: quotedMessage,
+        mentions: mentionUsers
+      },
+      { quoted: mek }
+    );
+  } else {
+    return reply('❌ Please reply to a message to tag all participants.');
+  }
 
-        // Send the message with mentions
-        await conn.sendMessage(from, {
-            text: `${message}`, // Send the message to tag everyone
-            mentions: participants.map(a => a.id), // Mentions all participants
-        }, { quoted: mek });
-
-    } catch (e) {
-        console.error(e);
-        reply("🚨 *An error occurred while trying to tag all members.*");
-    }
 });
 //--------------------------------------------
 //  TAG_ALL COMMANDS
