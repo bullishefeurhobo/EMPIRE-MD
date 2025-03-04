@@ -1,0 +1,42 @@
+services:
+  - name: empire-md-service
+    type: web
+    runtime: docker
+    docker:
+      build_context: .
+      dockerfile: Dockerfile  # Path to your Dockerfile
+    ports:
+      - 8000  # Expose the app on port 8000
+    routes:
+      - src: /
+        dest: /
+    plan: free  # Free plan for Render
+    envVars:
+      - key: ALWAYS_ONLINE
+        value: "false"
+      - key: ANTICALL
+        value: "false"
+      - key: ANTICALL_MSG
+        value: "*_📞 Auto Call Reject Mode Active. 📵 No Calls Allowed!_*"
+      - key: ANTILINK
+        value: "false"
+      - key: AUTO_LIKE_EMOJI
+        value: "💚"
+      - key: AUTO_LIKE_STATUS
+        value: "false"
+      - key: AUTO_RECORDING
+        value: "false"
+      - key: AUTO_TYPING
+        value: "false"
+      - key: AUTO_VIEW_STATUS
+        value: "false"
+      - key: MODE
+        value: "private"
+      - key: OWNER_NAME
+        value: "𝙴𝚖𝚙𝚒𝚛𝚎 𝚃𝚎𝚌𝚑"
+      - key: OWNER_NUMBER
+        value: "2348144250768"
+      - key: PREFIX
+        value: "."
+      - key: SESSION_ID
+        value: "zRJ2zQya#Ez8XGgRV_CD7Y6xCZnoc0pcEtlR6e_BIHbcydWQ0CfQ"
