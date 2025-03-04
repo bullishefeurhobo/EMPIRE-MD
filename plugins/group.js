@@ -682,9 +682,10 @@ cmd({
 //  TAG COMMANDS
 //--------------------------------------------
 cmd({ 
-  pattern: 'tag', 
-  desc: 'Tag all participants in the group', 
-  category: 'group' 
+  pattern: "tag",
+  desc: "Tag all participants in the group",
+  category: "group",
+  filename: __filename,
 }, async (conn, mek, m, { from, quoted, body, isGroup, sender, isOwner, reply }) => {
        try {
         if (!isGroup) return reply("𝐓𝐡𝐢𝐬 𝐅𝐞𝐚𝐭𝐮𝐫𝐞 𝐈𝐬 𝐎𝐧𝐥𝐲 𝐅𝐨𝐫 𝐆𝐫𝐨𝐮𝐩❗");
@@ -706,7 +707,6 @@ cmd({
   } else {
     return reply('❌ Please reply to a message to tag all participants.');
   }
-
 });
 //--------------------------------------------
 //  TAG_ALL COMMANDS
