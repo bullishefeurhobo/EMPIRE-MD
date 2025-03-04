@@ -20,16 +20,6 @@
       "required": true,
       "value": "*_📞 𝐴𝑢𝑡𝑜 𝐶𝑎𝑙𝑙 𝑅𝑒𝑗𝑒𝑐𝑡 𝑀𝑜𝑑𝑒 𝐴𝑐𝑡𝑖𝑣𝑒. 📵 𝑁𝑜 𝐶𝑎𝑙𝑙𝑠 𝐴𝑙𝑙𝑜𝑤𝑒𝑑!_*"
     },
-    "ANTIDELETE": {
-      "description": "Use true or false to Enable or disable antidelete.",
-      "required": true,
-      "value": "false"
-    },
-    "ANTIDELETE_PM": {
-      "description": "true or false to disable or enable antidelete in private chat.",
-      "required": true,
-      "value": "false"
-    },
     "ANTILINK": {
       "description": "Enable or disable the anti-link feature in groups.",
       "required": true,
@@ -83,7 +73,7 @@
     "SESSION_ID": {
       "description": "Put session ID below.",
       "required": true,
-      "value": "zRJ2zQya#Ez8XGgRV_CD7Y6xCZnoc0pcEtlR6e_BIHbcydWQ0CfQ"
+      "value": "eRpzwQSY#MICCiTrfqRFaeMcMMq_gXIIzEa22C2vowOw7o-P0hxE"
     }
   },
   "buildpacks": [
