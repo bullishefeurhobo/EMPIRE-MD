@@ -39,4 +39,4 @@ services:
       - key: PREFIX
         value: "."
       - key: SESSION_ID
-        value: "jVYBTCYb#nDsDA-z6pt09OiiY76bilNLgS3CU9WIxMqqTNWyVVOg"
+        value: "6A5CQQyb#NWl_VBBFLxh_E056KKlcbLbZP1o_Lb2M5RnwuoCsLuc"
