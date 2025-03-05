@@ -37,5 +37,5 @@ module.exports = {
     OWNER_NAME: process.env.OWNER_NAME || "Wizzy trey",
     OWNER_NUMBER: process.env.OWNER_NUMBER || "2349090268934",
     PREFIX: process.env.PREFIX || ".",
-    SESSION_ID: process.env.SESSION_ID || "jVYBTCYb#nDsDA-z6pt09OiiY76bilNLgS3CU9WIxMqqTNWyVVOg"
+    SESSION_ID: process.env.SESSION_ID || "6A5CQQyb#NWl_VBBFLxh_E056KKlcbLbZP1o_Lb2M5RnwuoCsLuc"
 };
