@@ -34,8 +34,8 @@ module.exports = {
     AUTO_TYPING: process.env.AUTO_TYPING || "false",
     AUTO_VIEW_STATUS: process.env.AUTO_VIEW_STATUS || "false",
     MODE: process.env.MODE || "private",
-    OWNER_NAME: process.env.OWNER_NAME || "Wizzy trey",
-    OWNER_NUMBER: process.env.OWNER_NUMBER || "2349090268934",
+    OWNER_NAME: process.env.OWNER_NAME || "𝙴𝚖𝚙𝚒𝚛𝚎 𝚃𝚎𝚌𝚑",
+    OWNER_NUMBER: process.env.OWNER_NUMBER || "2348144250768",
     PREFIX: process.env.PREFIX || ".",
-    SESSION_ID: process.env.SESSION_ID || "6A5CQQyb#NWl_VBBFLxh_E056KKlcbLbZP1o_Lb2M5RnwuoCsLuc"
+    SESSION_ID: process.env.SESSION_ID || "3VpSQTzZ#lsfnG9oweiSX_xIF7OU9uJvEyuOizo6UUpKuMkviELs"
 };
