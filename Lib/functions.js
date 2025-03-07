@@ -10,6 +10,37 @@ const axios = require('axios');
 const path = './config.env';
 const FormData = require("form-data");
 
+async function Catbox(filePath) {
+    return new Promise((resolve, reject) => {
+        if (!fs.existsSync(filePath)) {
+            return reject(new Error("❌ File not found."));
+        }
+        try {
+            const form = new FormData();
+            form.append("reqtype", "fileupload");
+            form.append("fileToUpload", fs.createReadStream(filePath));
+
+            axios({
+                url: "https://catbox.moe/user/api.php",
+                method: "POST",
+                headers: { ...form.getHeaders() },
+                data: form,
+            })
+            .then(response => {
+                if (response.data.startsWith("https://")) {
+                    resolve(response.data.trim());
+                } else {
+                    reject(new Error("❌ Upload failed."));
+                }
+            })
+            .catch(err => {
+                reject(new Error(String(err)));
+            });
+        } catch (err) {
+            reject(new Error(String(err)));
+        }
+    });
+}
 
 async function TelegraPh(Path) {
     return new Promise((resolve, reject) => {
