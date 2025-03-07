@@ -10,6 +10,35 @@ const axios = require('axios');
 const path = './config.env';
 const FormData = require("form-data");
 
+
+async function TelegraPh(Path) {
+    return new Promise((resolve, reject) => {
+        if (!fs.existsSync(Path)) {
+            return reject(new Error("File not Found"));
+        }
+        try {
+            const form = new FormData();
+            form.append("file", fs.createReadStream(Path));
+            axios({
+                url: "https://telegra.ph/upload",
+                method: "POST",
+                headers: {
+                    ...form.getHeaders()
+                },
+                data: form
+            })
+            .then(response => {
+                resolve("https://telegra.ph" + response.data[0].src);
+            })
+            .catch(err => {
+                reject(new Error(String(err)));
+            });
+        } catch (err) {
+            reject(new Error(String(err)));
+        }
+    });
+}
+
 async function empiretourl(path) {
   if (!fs.existsSync(path)) {
     throw new Error(`File not found: ${path}`);
@@ -169,5 +198,6 @@ module.exports = {
     sleep, 
     fetchJson,
     saveConfig,
-    empiretourl
+    empiretourl,
+    TelegraPh
 };
