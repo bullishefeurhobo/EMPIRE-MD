@@ -70,6 +70,44 @@ cmd({
 });
 
 cmd({
+    pattern: "uurl",
+    desc: "Upload Images to Telegraph and get URLs.",
+    category: "converter",
+    react: "⏳",
+    filename: __filename
+}, async (conn, mek, m, { from, quoted, reply, pushname }) => {
+    try {
+        if (!quoted) return reply(`Reply to an image to upload.\nUse *${config.PREFIX}url*`);
+
+        const mediaBuffer = await quoted.download();
+        if (!mediaBuffer) return reply('❌ Failed to download media. Please try again.');
+
+        const { fileTypeFromBuffer } = await import('file-type');
+        const fileType = await fileTypeFromBuffer(mediaBuffer);
+        if (!fileType) return reply('❌ Unable to determine the file type of the media.');
+
+        if (!fileType.mime.startsWith('image/')) {
+            return reply('❌ Only image uploads are supported on Telegraph.');
+        }
+
+        const tempFilePath = path.join(__dirname, `${getRandom(5)}.${fileType.ext}`);
+        fs.writeFileSync(tempFilePath, mediaBuffer);
+
+        const telegraphUrl = await TelegraPh(tempFilePath).catch(err => null);
+        fs.unlinkSync(tempFilePath); // Delete temp file after upload
+
+        if (!telegraphUrl) return reply('❌ Upload failed. Please try again.');
+
+        const message = `*Hey ${pushname}, Here is your image URL:*\n\n📎 ${telegraphUrl}`;
+        await conn.sendMessage(from, { image: { url: telegraphUrl }, caption: message }, { quoted: mek });
+
+        await m.react('✅');
+    } catch (error) {
+        console.error(error);
+        reply(`❌ An error occurred while uploading the file: ${error.message}`);
+    }
+});
+cmd({
     pattern: "tomp3",
     desc: "Convert video to MP3.",
     category: "converter",
