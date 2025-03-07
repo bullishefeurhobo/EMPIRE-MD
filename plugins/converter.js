@@ -1,7 +1,7 @@
 const { cmd } = require('../command');
 const config = require('../config');
 const axios = require('axios');
-const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, sleep, fetchJson, empiretourl } = require('../Lib/functions');
+const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, sleep, fetchJson, empiretourl, TelegraPh, Catbox} = require('../Lib/functions');
 const ffmpeg = require('fluent-ffmpeg');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const fs = require('fs');
@@ -69,6 +69,42 @@ cmd({
     }
 });
 
+
+cmd({
+    pattern: "catbox",
+    alias: ["url"],
+    desc: "Upload Files to Catbox.moe and get a URL.",
+    category: "converter",
+    react: "⏳",
+    filename: __filename
+}, async (conn, mek, m, { from, quoted, reply, pushname }) => {
+    try {
+        if (!quoted) return reply(`Reply to an image, video, audio, or document to upload.\nUse *${config.PREFIX}url*`);
+
+        const mediaBuffer = await quoted.download();
+        if (!mediaBuffer) return reply('❌ Failed to download media. Please try again.');
+
+        const { fileTypeFromBuffer } = await import('file-type');
+        const fileType = await fileTypeFromBuffer(mediaBuffer);
+        if (!fileType) return reply('❌ Unable to determine the file type of the media.');
+
+        const tempFilePath = path.join(__dirname, `${getRandom(5)}.${fileType.ext}`);
+        fs.writeFileSync(tempFilePath, mediaBuffer);
+
+        const catboxUrl = await Catbox(tempFilePath).catch(err => null);
+        fs.unlinkSync(tempFilePath); // Delete temp file after upload
+
+        if (!catboxUrl) return reply('❌ Upload failed. Please try again.');
+
+        const message = `*Hey ${pushname}, Here is your file URL:*\n\n📎 ${catboxUrl}`;
+        await conn.sendMessage(from, { text: message }, { quoted: mek });
+
+        await m.react('✅');
+    } catch (error) {
+        console.error(error);
+        reply(`❌ An error occurred while uploading the file: ${error.message}`);
+    }
+});
 cmd({
     pattern: "telegraph",
     desc: "Upload Images to Telegraph and get URLs.",
