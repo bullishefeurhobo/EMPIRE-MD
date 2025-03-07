@@ -70,7 +70,7 @@ cmd({
 });
 
 cmd({
-    pattern: "uurl",
+    pattern: "telegraph",
     desc: "Upload Images to Telegraph and get URLs.",
     category: "converter",
     react: "⏳",
