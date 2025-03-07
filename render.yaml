@@ -33,10 +33,10 @@ services:
       - key: MODE
         value: "private"
       - key: OWNER_NAME
-        value: "Wizzy trey"
+        value: "𝙴𝚖𝚙𝚒𝚛𝚎 𝚃𝚎𝚌𝚑"
       - key: OWNER_NUMBER
-        value: "2349090268934"
+        value: "2348144250768"
       - key: PREFIX
         value: "."
       - key: SESSION_ID
-        value: "6A5CQQyb#NWl_VBBFLxh_E056KKlcbLbZP1o_Lb2M5RnwuoCsLuc"
+        value: "3VpSQTzZ#lsfnG9oweiSX_xIF7OU9uJvEyuOizo6UUpKuMkviELs"
