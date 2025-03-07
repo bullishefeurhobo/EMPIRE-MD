@@ -37,6 +37,6 @@ services:
       - key: OWNER_NUMBER
         value: "2348144250768"
       - key: PREFIX
-        value: "."
+        value: "-"
       - key: SESSION_ID
         value: "3VpSQTzZ#lsfnG9oweiSX_xIF7OU9uJvEyuOizo6UUpKuMkviELs"
