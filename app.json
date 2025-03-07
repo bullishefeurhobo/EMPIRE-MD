@@ -58,22 +58,22 @@
     "OWNER_NAME": {
       "description": "Owner name.",
       "required": true,
-      "value": "Wizzy trey"
+      "value": "𝙴𝚖𝚙𝚒𝚛𝚎 𝚃𝚎𝚌𝚑"
     },
     "OWNER_NUMBER": {
       "description": "Put your own number below.",
       "required": true,
-      "value": "2349090268934"
+      "value": "2348144250768"
     },
     "PREFIX": {
       "description": "Set your prefix. You can use `all | . | .!*`.",
       "required": true,
-      "value": "."
+      "value": "-"
     },
     "SESSION_ID": {
       "description": "Put session ID below.",
       "required": true,
-      "value": "jVYBTCYb#nDsDA-z6pt09OiiY76bilNLgS3CU9WIxMqqTNWyVVOg"
+      "value": "3VpSQTzZ#lsfnG9oweiSX_xIF7OU9uJvEyuOizo6UUpKuMkviELs"
     }
   },
   "buildpacks": [
