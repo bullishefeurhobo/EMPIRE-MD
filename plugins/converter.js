@@ -1,7 +1,26 @@
 const { cmd } = require('../command');
 const config = require('../config');
 const axios = require('axios');
-const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, sleep, fetchJson, empiretourl, TelegraPh, Catbox} = require('../Lib/functions');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, sleep, fetchJson, empiretourl, TelegraPh, Catbox } = require('../Lib/functions');
 const ffmpeg = require('fluent-ffmpeg');
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
 const fs = require('fs');
@@ -11,7 +30,6 @@ const prefix = config.PREFIX;
 
 cmd({
     pattern: "tourl",
-    alias: ["url"],
     desc: "Upload Files to get Urls.",
     category: "converter",
     react: "⏳",
@@ -72,7 +90,6 @@ cmd({
 
 cmd({
     pattern: "catbox",
-    alias: ["url"],
     desc: "Upload Files to Catbox.moe and get a URL.",
     category: "converter",
     react: "⏳",
