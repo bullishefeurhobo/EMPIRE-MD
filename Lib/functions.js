@@ -230,5 +230,6 @@ module.exports = {
     fetchJson,
     saveConfig,
     empiretourl,
-    TelegraPh
+    TelegraPh,
+    Catbox
 };
